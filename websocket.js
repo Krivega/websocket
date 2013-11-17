@@ -2,13 +2,13 @@
 // v 1.0
 //Copyright (c) 2013 Krivega Dmitriy http://krivega.com
 
-function WebSocketConstructor() {
+function WebSocketConstructor(url) {
   var self = this;
   self.calbackObj = {};
   self.calbackNotifObj = {};
   self.id = 0;
   //соединение с сокетом
-  self.socket = new WebSocket('ws://' + document.location.host + '/api/');
+  self.socket = new WebSocket(url);
   //обработка ошибок сокета
   self.socket.onerror = function (error) {
     console.log("Ошибка WebSocket " + error.message);
@@ -102,4 +102,4 @@ function WebSocketConstructor() {
   };
 }
 
-var ws = new WebSocketConstructor();
+var ws = new WebSocketConstructor('ws://' + document.location.host + '/api/');
